@@ -1,15 +1,11 @@
-export const bringMovies = async (url, stateSetter) => {
+export const bringMovies = async (url) => {
   try {
     const res = await fetch(url)
     const dataJson = await res.json();
     const data = await dataJson;
     console.log('DATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',data);
-    return stateSetter(data)
-/*     if(data.results){
-      return stateSetter(data.results)
-    } else {
-      return stateSetter(data)
-    } */
+    return (data)
+
 
   }
   catch (err) {

@@ -6,53 +6,34 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
   const [searchText, setSearchText] = React.useState("");
   const [rateValue, setRateValue] = React.useState("");
 
-  const [ moreMovies, setMoreMovies ] = React.useState({results: [], page: 1});
-
-  function search(event) {
+  async function search(event) {
     event.preventDefault();
     const stars = document.querySelectorAll('.rate-input')
     stars.forEach(star => star.checked = false)
     console.log("submit search");
     if (!searchText) {
-      return bringMovies(
+      const moviesDiscovered = await bringMovies(
         urlGenerator("/discover/movie", "&sort_by=popularity.desc"),
-        setMovies
-      );
+      )
+      return setMovies(moviesDiscovered)
+    } else {
+      const searchedMovies = await bringMovies(
+       urlGenerator("/search/movie", `&query=${searchText}`),
+      )
+      setMoviesToShow(searchedMovies.results)
+      return setMovies(searchedMovies)
     }
-    bringMovies(
-      urlGenerator("/search/movie", `&query=${searchText}`),
-      setMovies
-    );
+
   }
-
-  // filter
-
   
-
   const filter = () => {
+    console.log('RATE VALUEEEEEEEEEEEEEE',rateValue, rateValue - 2);
     const moviesFiltered = movies.results
       .filter(movie => {
-        return (movie.vote_average >= rateValue && movie.vote_average < (rateValue + 2))
+        return (movie.vote_average <= rateValue && movie.vote_average > (rateValue - 2))
       })
       .sort((movieA, movieB) => movieB.vote_average - movieA.vote_average);
 
-      if (moviesToShow.length < 20) {
-        if (!searchText) {
-            bringMovies(
-            urlGenerator("/discover/movie", `&sort_by=popularity.desc&page=${moreMovies.page + 1}`),
-            setMoreMovies
-          );
-        } else {
-          bringMovies(
-            urlGenerator("/search/movie", `&query=${searchText}&page=${moreMovies.page + 1}`),
-            setMoreMovies
-          );
-
-        }
-        console.log('MORE MOVIES-------------------------', moreMovies);
-
-        setMovies({...movies, results:[...movies.results, ...moreMovies.results]})
-      }
     console.log("moviesfiltered------------", moviesFiltered);
     return setMoviesToShow(moviesFiltered);
   };
@@ -61,7 +42,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
     if (rateValue) {
       filter();
     }
-  }, [rateValue, movies]);
+  }, [rateValue]);
 
 
   function changeRateValue(event) {
@@ -95,7 +76,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             type="radio"
             name="rate"
             id="rate-1"
-            value={0}
+            value={2}
             onClick={changeRateValue}
           />
           <label htmlFor="rate-1" className="rate-label"></label>
@@ -104,7 +85,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             type="radio"
             name="rate"
             id="rate-2"
-            value={2}
+            value={4}
             onClick={changeRateValue}
           />
           <label htmlFor="rate-2" className="rate-label"></label>
@@ -113,7 +94,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             type="radio"
             name="rate"
             id="rate-3"
-            value={4}
+            value={6}
             onClick={changeRateValue}
           />
           <label htmlFor="rate-3" className="rate-label"></label>
@@ -122,7 +103,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             type="radio"
             name="rate"
             id="rate-4"
-            value={6}
+            value={8}
             onClick={changeRateValue}
           />
           <label htmlFor="rate-4" className="rate-label"></label>
@@ -131,7 +112,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             type="radio"
             name="rate"
             id="rate-5"
-            value={8}
+            value={10}
             onClick={changeRateValue}
           />
           <label htmlFor="rate-5" className="rate-label"></label>

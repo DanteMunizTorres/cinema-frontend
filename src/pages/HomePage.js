@@ -12,16 +12,15 @@ const HomePage = () => {
   useEffect(()=> {
     bringMovies(
       urlGenerator('/discover/movie', '&sort_by=popularity.desc'),
-      setMovies
       )
-    setMoviesToShow(movies.results)
+      .then(data => {
+        setMoviesToShow(data.results)
+        return setMovies(data)
+      })
+      
   }, [])
 
-  useEffect(()=> {
-    if(!moviesToShow) {
-      setMoviesToShow(movies.results)   
-    }
-  }, [movies])
+
   
   console.log('MOVIES TO SHOW-------------------------------------',moviesToShow);
 
