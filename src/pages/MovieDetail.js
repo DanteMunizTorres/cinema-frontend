@@ -1,15 +1,23 @@
 
 import React from 'react';
 
-import { useParams } from 'react-router-dom';
+import { imgUrlGenerator } from '../utls/fetchData';
 
-const Article = () => {
-  const {name} = useParams()
+const MovieDetail = ({movie}) => {
+
+
+
   return (
-  <>
-  <h2>This is the {name} Article</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores illum consequuntur inventore nesciunt non, nostrum aut excepturi unde, saepe suscipit ut, maiores consectetur asperiores! Numquam ipsam optio veritatis cum nisi.</p>
-  </>
+    <article className='movie-article'>
+      <div className='movie-article__hover-view'>
+        <h3>{movie.title}</h3>
+        <p>{movie.vote_average}</p>
+      </div> 
+      <div className='img-container'>
+        <img src={imgUrlGenerator(300, movie.poster_path)} alt='movie poster' />
+      </div>
+
+    </article>
 )}
 
-export default Article
+export default MovieDetail

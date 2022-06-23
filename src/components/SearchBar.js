@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
+
 import { bringMovies, urlGenerator } from "../utls/fetchData";
 
 const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
@@ -25,9 +28,8 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
     }
 
   }
-  
+
   const filter = () => {
-    console.log('RATE VALUEEEEEEEEEEEEEE',rateValue, rateValue - 2);
     const moviesFiltered = movies.results
       .filter(movie => {
         return (movie.vote_average <= rateValue && movie.vote_average > (rateValue - 2))
@@ -79,7 +81,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             value={2}
             onClick={changeRateValue}
           />
-          <label htmlFor="rate-1" className="rate-label"></label>
+          <label htmlFor="rate-1" className="rate-label">{rateValue > 0? <AiFillStar />: <AiOutlineStar />}</label>
           <input
             className="rate-input"
             type="radio"
@@ -88,7 +90,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             value={4}
             onClick={changeRateValue}
           />
-          <label htmlFor="rate-2" className="rate-label"></label>
+          <label htmlFor="rate-2" className="rate-label">{rateValue > 2? <AiFillStar />: <AiOutlineStar />}</label>
           <input
             className="rate-input"
             type="radio"
@@ -97,7 +99,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             value={6}
             onClick={changeRateValue}
           />
-          <label htmlFor="rate-3" className="rate-label"></label>
+          <label htmlFor="rate-3" className="rate-label">{rateValue > 4? <AiFillStar />: <AiOutlineStar />}</label>
           <input
             className="rate-input"
             type="radio"
@@ -106,7 +108,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             value={8}
             onClick={changeRateValue}
           />
-          <label htmlFor="rate-4" className="rate-label"></label>
+          <label htmlFor="rate-4" className="rate-label">{rateValue > 6? <AiFillStar />: <AiOutlineStar />}</label>
           <input
             className="rate-input"
             type="radio"
@@ -115,7 +117,7 @@ const SearchBar = ({ setMovies, setMoviesToShow, movies, moviesToShow }) => {
             value={10}
             onClick={changeRateValue}
           />
-          <label htmlFor="rate-5" className="rate-label"></label>
+          <label htmlFor="rate-5" className="rate-label">{rateValue > 8? <AiFillStar />: <AiOutlineStar />}</label>
         </div>
       </form>
     </>

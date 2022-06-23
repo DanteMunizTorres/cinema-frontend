@@ -3,6 +3,7 @@ import { bringMovies, urlGenerator } from '../utls/fetchData';
 
 import { LoaderAnimation } from '../components/LoaderAnimation';
 import SearchBar from '../components/SearchBar';
+import MovieArticle from '../components/MovieArticle';
 
 const HomePage = () => {
 
@@ -28,24 +29,19 @@ const HomePage = () => {
   <>
   <h1>Home Page</h1>
 
-  {
-    movies ?
+
     <SearchBar 
     setMovies={setMovies}
     setMoviesToShow={setMoviesToShow} 
     movies={movies} 
     moviesToShow={moviesToShow} 
-    /> : <LoaderAnimation />
-  }
+    /> 
   
   {
     moviesToShow ?
     moviesToShow.map((movie, i) => {
       return (
-        <article key={i}>
-          <h3>{movie.title}</h3>
-          <p>{movie.vote_average}</p>
-        </article>
+        <MovieArticle movie={movie} key={i} />
       )
     }) : <LoaderAnimation />
   }
