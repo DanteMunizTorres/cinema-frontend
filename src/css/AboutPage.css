@@ -1,0 +1,44 @@
+@import './Colors.css';
+
+
+/* ABOUT */
+
+.about {
+  min-height: 200px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.about__title {
+  margin: 16px 0;
+  text-align: center;
+  font-size: 2.4rem;
+}
+.about__info {
+  margin: 8px 0;
+  width: 80%;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.about-info__link {
+  color: var(--white);
+}
+.about-info__link:hover {
+  color: var(--yellow);
+}
+
+@media (min-width: 768px) {
+  .about {
+    min-height: 300px;
+  }
+  .about__title {
+
+    font-size: 3.2rem;
+  }
+  .about__info {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+}

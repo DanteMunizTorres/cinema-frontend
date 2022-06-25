@@ -1,0 +1,55 @@
+@import './Colors.css';
+
+/* MOVIE DETAIL */
+
+.movie-detail {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.6rem;
+
+  width: 100%;
+}
+
+.movie-detail__title {
+  width: 80%;
+  font-size: 2.4rem;
+  text-align: center;
+  margin: 16px 0;
+}
+
+.movie-detail__info-container {
+  min-height: 500px;
+  position: relative;
+
+}
+
+.movie-detail__info {
+  margin: 80% 24px 24px;
+  font-size: 1.6rem;
+}
+
+
+@media (min-width: 768px) {
+  .movie-detail__info {
+    width: 60%;
+    margin: 80% auto 24px;
+    font-size: 2rem;
+  }
+  .movie-detail__title {
+    font-size: 3.2rem;
+  }
+
+}
+
+@media (min-width: 1200px) {
+  .movie-detail__info-container {
+    width: 70%;
+    border-radius: 8px;
+  }
+  .movie-detail__info {
+    margin: 50% auto 48px;
+  }
+}
+

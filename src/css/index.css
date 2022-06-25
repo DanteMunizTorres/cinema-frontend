@@ -1,0 +1,44 @@
+@import './Colors.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Raleway:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  font-size: 62.5%;
+  color: var(--white);
+  font-family: 'Raleway', sans-serif;
+}
+html::-webkit-scrollbar {
+  width: 8px;
+  background-color: var(--black);
+  border-radius: 5px;
+  border: 1px solid var(--black);
+}
+html::-webkit-scrollbar-thumb {
+  border: 1px solid var(--white);
+  border-radius: 5px;
+  background-color: var(--black)/*  opacity(0.5) */;
+} 
+html::-webkit-scrollbar-thumb:hover {
+  border: 1px solid var(--yellow);
+  background-color: var(--yellow)
+} 
+
+
+body {
+  background-color: var(--black);
+}
+
+@import './AboutPage.css';
+@import './App.css';
+@import './HomePage.css';
+@import './MovieArticle.css';
+@import './MovieDetail.css';
+@import './SearchBar.css'
+

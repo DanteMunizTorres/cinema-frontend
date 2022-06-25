@@ -1,10 +1,12 @@
+## Cinema Frontend
+
+Una página de practica utilzando React.
 
 
+### Realizada por:
+Dante Muniz Torres.
 
-
-
-
-
-
-#### Api key
-69a105f4f1614e3db842531b1dbceab3
+#### Para poder ver la pagina web:
+- git clone del repositorio.
+- npm i
+- npm start
